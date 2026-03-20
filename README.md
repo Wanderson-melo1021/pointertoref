@@ -20,6 +20,8 @@ O programa recebe um DOI como entrada, busca o registro em formato BibTex via HT
     -   doi
     -   url
 -   Extrai tipo de entrada e chave BibTeX
+- Gera referencias no formato abnt
+- Reconhece estilos adicionais (APA, Vancouver) para futura implementação
 
 ## Como compilar
 
@@ -45,7 +47,7 @@ make
 ## Como executar
 
 ``` bash
-./pointertoref --doi <DOI>
+./pointertoref --doi <DOI> [--style abnt|apa|vancouver]
 ```
 
 ## Exemplo:
@@ -68,39 +70,47 @@ URL: http://dx.doi.org/10.1139/cjpp-2025-0146
 Editora: Canadian Science Publishing
 Tipo: article
 Chave: Melo_2026
+
+=== REFERÊNCIA ===
+Melo, Wanderson Gabriel Gomes de et al. GLP-1 and diabetic nephropathy share key molecular targets. Canadian Journal of Physiology and Pharmacology, v. 104, p. 1–10, 2026. Disponível em: http://dx.doi.org/10.1139/cjpp-2025-0146. Acesso em: 19 mar. 2026.
 ```
 
 ## Estrutura do projeto
 
-```   
+```
 .
 ├── data
-│   ├── input
-│   └── output
+│   ├── input
+│   └── output
 ├── include
-│   ├── abnt.h
-│   ├── bibtex.h
-│   ├── doi.h
-│   ├── fetch.h
-│   └── io.h
+│   ├── abnt.h
+│   ├── bibtex.h
+│   ├── doi.h
+│   ├── fetch.h
+│   ├── io.h
+│   ├── style.h
+│   └── formatter.h
 ├── Makefile
 ├── README.html
 ├── README.md
 ├── src
-│   ├── abnt.c
-│   ├── bibtex.c
-│   ├── doi.c
-│   ├── fetch.c
-│   ├── io.c
-│   └── main.c
+│   ├── abnt.c
+│   ├── bibtex.c
+│   ├── doi.c
+│   ├── fetch.c
+│   ├── io.c
+│   ├── style.c
+│   ├── formatter.c
+│   └── main.c
 └── tests
 ```
 
 ## Proximos passos
 
--   Formatação em ABNT
--   Suporte a APA, Vancouver
--   Tratamento de autores
--   Suporte a múltiplos DOIs
-
+- Refinar a formatação ABNT
+- Implementar formatação APA
+- Implementar formatação Vancouver
+- Melhorar o tratamento de autores
+- Suporte a múltiplos DOIs
+- Exportação para arquivos (txt, bib, etc.)
 ------------------------------------------------------------------------
